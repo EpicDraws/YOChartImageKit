@@ -12,8 +12,8 @@
     return self;
 }
 
-- (NSNumber *) maxValue {
-    return _maxValue ? _maxValue : [NSNumber numberWithFloat:[[_values valueForKeyPath:@"@max.floatValue"] floatValue]];
+- (NSNumber *) maxYValue {
+    return _maxYValue ? _maxYValue : [NSNumber numberWithFloat:[[_values valueForKeyPath:@"@max.floatValue"] floatValue]];
 }
 
 - (UIImage *)drawImage:(CGRect)frame scale:(CGFloat)scale {
@@ -22,7 +22,7 @@
     NSUInteger valuesCount = _values.count;
     CGFloat pointX = frame.size.width / (valuesCount - 1);
     NSMutableArray<NSValue *> *points = [NSMutableArray array];
-    CGFloat maxValue = _maxValue ? [_maxValue floatValue] : [[_values valueForKeyPath:@"@max.floatValue"] floatValue];
+    CGFloat maxValue = _maxYValue ? [_maxYValue floatValue] : [[_values valueForKeyPath:@"@max.floatValue"] floatValue];
 
     [_values enumerateObjectsUsingBlock:^(NSNumber *number, NSUInteger idx, BOOL *_) {
         CGFloat ratioY = number.floatValue / maxValue;
